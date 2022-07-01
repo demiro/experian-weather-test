@@ -1,0 +1,12 @@
+<header id="app-header">
+    <h1>LOGO</h1>
+    <form [formGroup]="weatherForm" (submit)="onSubmit($event)">
+        <label for="frm-input-city">City: </label>
+        <input id="frm-input-city" type="text" formControlName="city">
+
+        <label for="frm-input-country">Country: </label>
+        <input id="frm-input-country" type="text" formControlName="country">
+
+        <input type="submit" value="Get local time, weather and temperature">
+    </form>
+</header>
