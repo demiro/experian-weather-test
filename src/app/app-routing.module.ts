@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: ':country/:city', component: MainPageComponent },
+  { path: ':city/', component: MainPageComponent }, // TODO: country param
   // { path: '**', component: PageNotFoundComponent },  TODO: Error Handling
 ];
 

@@ -1,6 +1,7 @@
-import { StateService } from './../../services/state.service';
+import { BehaviorSubject } from 'rxjs';
+import { IWeatherData, WeatherService } from './../../services/weather.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'experian-app-header',
@@ -10,20 +11,19 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class AppHeaderComponent implements OnInit {
   weatherForm = new FormGroup({
     city: new FormControl(''),
-    country: new FormControl(''),
+    // country: new FormControl(''),
   });
 
-  constructor(private stateService: StateService) {}
+  data$: BehaviorSubject<IWeatherData> = this.weatherService.data$;
 
-  ngOnInit(): void {
-    this.stateService.state.currentCity$.subscribe((newValue: string) => {
-      this.weatherForm.controls.city.patchValue(newValue);
-    });
-  }
+  constructor(private weatherService: WeatherService) {}
+
+  ngOnInit(): void {}
 
   onSubmit(event: Event): void {
     event.preventDefault();
-    this.stateService.changeValue('currentCity$', 1);
+    // TODO: extra validation
+    this.weatherService.getCurrent();
     console.log('SBMITTED');
   }
 }
