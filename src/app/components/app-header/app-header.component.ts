@@ -1,3 +1,4 @@
+import { StateService } from './../../services/state.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -12,12 +13,17 @@ export class AppHeaderComponent implements OnInit {
     country: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(private stateService: StateService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.stateService.state.currentCity$.subscribe((newValue: string) => {
+      this.weatherForm.controls.city.patchValue(newValue);
+    });
+  }
 
   onSubmit(event: Event): void {
     event.preventDefault();
-    console.log('SUBMITTED');
+    this.stateService.changeValue('currentCity$', 1);
+    console.log('SBMITTED');
   }
 }
