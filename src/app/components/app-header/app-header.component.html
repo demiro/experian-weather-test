@@ -4,10 +4,13 @@
         <label for="frm-input-city">City: </label>
         <input id="frm-input-city" type="text" formControlName="city">
 
-        <!-- <label for="frm-input-country">Country: </label>
-        <input id="frm-input-country" type="text" formControlName="country"> -->
+        <label for="frm-input-country">Country: </label>
+        <input id="frm-input-country" type="text" formControlName="country">
 
-        <input type="submit" value="Get local time, weather and temperature">
+        <input type="submit" value="Get local time, weather and temperature"
+            [disabled]="weatherForm.invalid || (loading$ | async)">
+
+        <!-- TODO: validation errors -->
     </form>
 
     {{data$ | async | json}}

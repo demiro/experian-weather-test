@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 // TODO: move interfaces to models dir
 interface ILocation {
@@ -28,17 +29,32 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  getCurrent(): void {
+  getCurrent(city: string, country: string): void {
     // TODO: error handling, server response and API call failure
     // TODO: caching... cache the response per city... calculate current local time from the last response
+    // TODO: figure out better security for API key, here it is publicly exposed, it should never be publicly exposed... possibly handle with express/.net proxy
+    this.loading$.next(true);
+    this.data$.next({});
     this.http
       .get<IWeatherData>(
-        'http://api.weatherapi.com/v1/forecast.json?key=f7aa991d273c41eebf3164832220107&q=London&days=7&aqi=no&alerts=no'
+        `${environment.API_PATH}/v${environment.API_VER}/current.json?key=${environment.API_KEY}&q=${city},${country}&aqi=no&alerts=no`
       )
       .subscribe((data: IWeatherData) => {
         this.data$.next(data);
+        this.loading$.next(false);
       });
   }
 
-  getForecast() {}
+  getForecast(city: string, country: string, days: number = 7): void {
+    this.loading$.next(true);
+    this.data$.next({});
+    this.http
+      .get<IWeatherData>(
+        `${environment.API_PATH}/v${environment.API_VER}/forecast.json?key=${environment.API_KEY}&q=${city},${country}&days=${days}&aqi=no&alerts=no`
+      )
+      .subscribe((data: IWeatherData) => {
+        this.data$.next(data);
+        this.loading$.next(false);
+      });
+  }
 }
