@@ -1,0 +1,20 @@
+<div *ngIf="data && location" class="weather-card">
+    <header class="location">
+        <h2>{{location.name}}</h2>
+        <h3>Local time: <b>{{location.localtime}}</b></h3>
+    </header>
+
+    <div class="weather-temperature">
+        <button (click)="showF = !showF">{{showF ? 'Show in °C' : 'Show in °F'}}</button>
+        <h2>{{temp}}</h2>
+        <p>Feels like: {{tempFeels}}</p>
+    </div>
+
+
+    <div class="weather-condition">
+        <img *ngIf="data.condition.icon" [src]="data.condition.icon" [alt]="data.condition.text">
+        <h4 *ngIf="data.condition.text">{{data.condition.text}}</h4>
+    </div>
+</div>
+
+<div *ngIf="!data" class="weather-card-skeleton"></div>

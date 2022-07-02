@@ -1,0 +1,15 @@
+#app-header {
+  padding: 2em;
+  background: #efefef;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    margin: 0;
+  }
+
+  input {
+    margin-left: 1rem;
+  }
+}

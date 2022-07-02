@@ -1,0 +1,15 @@
+.weather-card {
+  border: 2px solid #888;
+  border-radius: 1rem;
+
+  width: 180px;
+  margin: 5rem auto;
+
+  .location {
+    background-color: red;
+  }
+
+  .weather-temperature {
+    padding: 2rem;
+  }
+}

@@ -1,17 +1,14 @@
 <header id="app-header">
-    <h1>LOGO</h1>
+    <h1>EXPERIAN WEATHER LOGO</h1>
     <form [formGroup]="weatherForm" (submit)="onSubmit($event)">
-        <label for="frm-input-city">City: </label>
-        <input id="frm-input-city" type="text" formControlName="city">
-
-        <label for="frm-input-country">Country: </label>
-        <input id="frm-input-country" type="text" formControlName="country">
+        <input type="text" formControlName="city" placeholder="City">
+        <input type="text" formControlName="country" placeholder="Country">
 
         <input type="submit" value="Get local time, weather and temperature"
             [disabled]="weatherForm.invalid || (loading$ | async)">
 
+        <!-- TODO: loading spinner -->
+
         <!-- TODO: validation errors -->
     </form>
-
-    {{data$ | async | json}}
 </header>

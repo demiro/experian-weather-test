@@ -8,21 +8,21 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './app-header.component.html',
   styleUrls: ['./app-header.component.scss'],
 })
-export class AppHeaderComponent implements OnInit {
+export class AppHeaderComponent {
   weatherForm = new FormGroup({
-    city: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    country: new FormControl('', [
+    city: new FormControl('Piran', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    country: new FormControl('Slovenia', [
       Validators.required,
       Validators.minLength(2),
     ]),
   });
 
-  data$: BehaviorSubject<IWeatherData> = this.weatherService.data$;
   loading$: BehaviorSubject<boolean> = this.weatherService.loading$;
 
   constructor(private weatherService: WeatherService) {}
-
-  ngOnInit(): void {}
 
   onSubmit(event: Event): void {
     event.preventDefault();
@@ -30,11 +30,10 @@ export class AppHeaderComponent implements OnInit {
       return;
     }
 
-    // TODO: extra validation
+    // TODO: extra validation, especially allowed countries
     this.weatherService.getCurrent(
       this.weatherForm.controls.city.value as string,
       this.weatherForm.controls.country.value as string
     );
-    console.log('SBMITTED');
   }
 }
