@@ -52,12 +52,15 @@ export interface IWeatherData {
   current?: any; // TODO: define interface for this as well
 }
 
+const defaultTempUnit = 'C';
+
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
   loading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   data$: BehaviorSubject<IWeatherData> = new BehaviorSubject({});
+  tempUnit$: BehaviorSubject<string> = new BehaviorSubject(defaultTempUnit);
 
   constructor(private http: HttpClient) {}
 
@@ -88,5 +91,10 @@ export class WeatherService {
         this.data$.next(data);
         this.loading$.next(false);
       });
+  }
+
+  changeTempUnit(unit: string) {
+    this.tempUnit$.next(unit);
+    // TODO: save and get from localStorage
   }
 }

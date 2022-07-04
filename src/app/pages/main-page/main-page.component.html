@@ -1,5 +1,5 @@
 <main class="app-content">
     <experian-weather-card [loading]="loading$ | async" [data]="(data$ | async)?.current"
-        [location]="(data$ | async)?.location">
+        [location]="(data$ | async)?.location" [tempUnit]="tempUnit$ | async" (changeTempUnit)="changeTempUnit($event)">
     </experian-weather-card>
 </main>

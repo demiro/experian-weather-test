@@ -1,9 +1,9 @@
 .weather-card {
-  border: 2px solid rgb(136 109 0 / 20%);
+  border: 2px solid rgb(0 115 136 / 35%);
   border-radius: 1rem;
 
-  width: 100%;
-  max-width: 450px;
+  width: 650px;
+  max-width: 100%;
   padding: 1rem;
   background: inherit;
   position: relative;
@@ -12,11 +12,45 @@
   backdrop-filter: blur(15px);
 
   .location {
-    z-index: 1001;
+    .icon-pin {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      //   line-height: ;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    margin-bottom: 32px;
+  }
+
+  .card-content {
+    display: flex;
+    align-items: center;
+  }
+  .weather-condition {
+    text-align: center;
+    padding-right: 2rem;
+    border-right: 1px inset rgba(255, 255, 255, 0.4);
+
+    .icon-condition {
+      $size: 96px;
+      width: $size;
+      height: $size;
+    }
   }
 
   .weather-temperature {
-    padding: 2rem;
-    z-index: 1002;
+    padding: 0 2rem;
+    text-align: center;
+    border-right: 1px inset rgba(255, 255, 255, 0.4);
+
+    .temperature {
+      font-size: 64px;
+    }
+  }
+
+  .local-time {
+    padding: 0 2rem;
+    text-align: center;
   }
 }

@@ -11,6 +11,7 @@ import { IWeatherData, WeatherService } from 'src/app/services/weather.service';
 export class MainPageComponent implements OnInit {
   data$: BehaviorSubject<IWeatherData> = this.weatherService.data$;
   loading$: BehaviorSubject<boolean> = this.weatherService.loading$;
+  tempUnit$: BehaviorSubject<string> = this.weatherService.tempUnit$;
 
   private country?: string;
   private city?: string;
@@ -27,5 +28,9 @@ export class MainPageComponent implements OnInit {
       if (this.country && this.city)
         this.weatherService.getCurrent(this.city, this.country);
     });
+  }
+
+  changeTempUnit(unit: string) {
+    this.weatherService.changeTempUnit(unit);
   }
 }

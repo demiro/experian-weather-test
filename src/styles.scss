@@ -4,6 +4,12 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700;900&display=swap");
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -22,6 +28,7 @@ html {
 }
 
 body {
+  // TODO: change image depending on location and weather condition
   background: url("./assets/bg.jpg") no-repeat;
   background-position: center;
   background-repeat: no-repeat;

@@ -1,10 +1,21 @@
 <header id="app-header">
-    <form [formGroup]="weatherForm" (submit)="onSubmit($event)">
-        <input type="text" formControlName="city" placeholder="City">
-        <input type="text" formControlName="country" placeholder="Country">
+    <div class="app-title">
+        <h2>Get local time, weather and temperature</h2>
+        <!-- TODO: make it's own component -->
+        <form id="frm-unit-switch" [formGroup]="tempUnitForm" (submit)="$event.preventDefault()">
+            <h3>°C</h3>
+            <label class="toggle-switch">
+                <input type="checkbox" formControlName="unitSwitch" (change)="tempUnitChange($event)">
+                <div class="slider"></div>
+            </label>
+            <h3>°F</h3>
+        </form>
+    </div>
+    <form id="frm-weather" [formGroup]="weatherForm" (submit)="onSubmit($event)">
+        <input #cityInput type="search" formControlName="city" placeholder="City" autofocus>
+        <input type="search" formControlName="country" placeholder="Country">
 
-        <input type="submit" value="Get local time, weather and temperature"
-            [disabled]="weatherForm.invalid || (loading$ | async)">
+        <input type="submit" value="Get" [disabled]="weatherForm.invalid || (loading$ | async)">
 
         <!-- TODO: loading spinner -->
 
