@@ -1,15 +1,22 @@
 .weather-card {
-  border: 2px solid #888;
+  border: 2px solid rgb(136 109 0 / 20%);
   border-radius: 1rem;
 
-  width: 180px;
-  margin: 5rem auto;
+  width: 100%;
+  max-width: 450px;
+  padding: 1rem;
+  background: inherit;
+  position: relative;
+
+  background-color: rgb(39 174 194 / 20%);
+  backdrop-filter: blur(15px);
 
   .location {
-    background-color: red;
+    z-index: 1001;
   }
 
   .weather-temperature {
     padding: 2rem;
+    z-index: 1002;
   }
 }

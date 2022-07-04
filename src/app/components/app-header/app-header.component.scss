@@ -1,15 +1,16 @@
 #app-header {
   padding: 2em;
-  background: #efefef;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  h1 {
-    margin: 0;
-  }
+  justify-content: space-around;
 
   input {
-    margin-left: 1rem;
+    margin-left: 2px;
+    padding: 6px 16px;
+    font-size: 22px;
   }
 }

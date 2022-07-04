@@ -1,7 +1,8 @@
-<div *ngIf="data && location" class="weather-card">
+<div *ngIf="!loading && data && location" class="weather-card">
     <header class="location">
-        <h2>{{location.name}}</h2>
-        <h3>Local time: <b>{{location.localtime}}</b></h3>
+        <h2>{{location?.name}}, {{location?.country}}</h2>
+
+        <p class="time">Local time: <b>{{location?.localtime}}</b></p>
     </header>
 
     <div class="weather-temperature">
@@ -17,4 +18,4 @@
     </div>
 </div>
 
-<div *ngIf="!data" class="weather-card-skeleton"></div>
+<div *ngIf="loading" class="weather-card-skeleton"></div>

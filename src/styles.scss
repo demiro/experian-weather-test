@@ -1,3 +1,29 @@
 @import "./include-media";
 @import "../node_modules/normalize-scss/sass/normalize";
 @include normalize();
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700;900&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 900;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: "Raleway", sans-serif;
+  color: #fff;
+}
+
+body {
+  background: url("./assets/bg.jpg") no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

@@ -8,6 +8,7 @@ import { ICurrentWeather } from 'src/app/services/weather.service';
   styleUrls: ['./weather-card.component.scss'],
 })
 export class WeatherCardComponent implements OnInit {
+  @Input() loading: boolean | null = false;
   @Input() location?: ILocation | null;
   @Input() data?: ICurrentWeather | null;
   showF: boolean = false; // TODO: save and get this value from localStorage
