@@ -7,9 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { WeatherCardComponent } from './components/weather-card/weather-card.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 
 @NgModule({
-  declarations: [AppComponent, AppHeaderComponent, WeatherCardComponent],
+  declarations: [AppComponent, AppHeaderComponent, WeatherCardComponent, MainPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

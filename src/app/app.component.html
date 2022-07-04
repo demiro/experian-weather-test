@@ -1,7 +1,3 @@
 <experian-app-header></experian-app-header>
 
-<main class="app-content">
-  <experian-weather-card [loading]="loading$ | async" [data]="(data$ | async)?.current"
-    [location]="(data$ | async)?.location">
-  </experian-weather-card>
-</main>
+<router-outlet></router-outlet>

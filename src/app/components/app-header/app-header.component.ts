@@ -1,7 +1,8 @@
-import { BehaviorSubject } from 'rxjs';
-import { IWeatherData, WeatherService } from './../../services/weather.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { WeatherService } from './../../services/weather.service';
 
 @Component({
   selector: 'experian-app-header',
@@ -22,7 +23,7 @@ export class AppHeaderComponent {
 
   loading$: BehaviorSubject<boolean> = this.weatherService.loading$;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService, private router: Router) {}
 
   onSubmit(event: Event): void {
     event.preventDefault();
@@ -31,9 +32,13 @@ export class AppHeaderComponent {
     }
 
     // TODO: extra validation, especially allowed countries
-    this.weatherService.getCurrent(
-      this.weatherForm.controls.city.value as string,
-      this.weatherForm.controls.country.value as string
-    );
+
+    this.router.navigate([
+      `/${(
+        this.weatherForm.controls.country.value as string
+      ).toLocaleLowerCase()}/${(
+        this.weatherForm.controls.city.value as string
+      ).toLocaleLowerCase()}`,
+    ]);
   }
 }
